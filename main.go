@@ -6,8 +6,13 @@ import (
 )
 
 func main() {
-	userHeight, userWeight := getUserValues()
-	getResult(userHeight, userWeight)
+	isRepeat := true
+	for isRepeat  {
+		userHeight, userWeight := getUserValues()
+		getResult(userHeight, userWeight)
+
+		isRepeat = handleRepeat()
+	}
 }
 
 func getResult( userHeight, userWeight float64 ) {
@@ -40,3 +45,13 @@ func getUserValues () (float64, float64) {
 
 	return userHeight, userWeight
 }
+
+
+func handleRepeat () (bool) {
+	var answer string 
+	for answer != "y" && answer != "n" {
+		fmt.Println("Again ? y/n")
+		fmt.Scan(&answer)
+	}
+	return answer == "y" 
+} 
